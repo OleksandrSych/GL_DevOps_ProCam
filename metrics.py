@@ -3,13 +3,16 @@ import psutil
 
 class Sys_Info:
     def display_Info(self):
-      for info in self._get_Info():
+      for info in self._get_Info:
         print(info)
-
+        
+    @property
     def _get_Info(self):
         yield 'For get information you have to use parameters: cpu or mem'
+        
 
 class CPU_Info(Sys_Info):
+    @property
     def _get_Info(self):
         try:
             cpu_time = psutil.cpu_times_percent(interval=1.0,percpu=False)
@@ -21,8 +24,10 @@ class CPU_Info(Sys_Info):
             yield 'system.cpu.system {}'.format(cpu_time.system)
         except:
             yield 'CPU info ERROR'
+            
 
 class MEM_Info(Sys_Info):
+    @property
     def _get_Info(self):
         try:
             virtual_mem = psutil.virtual_memory()
