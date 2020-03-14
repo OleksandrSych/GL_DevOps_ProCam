@@ -1,2 +1,3 @@
-#!/bin/bash
-python3 metrics.py "$@"
+# !/bin/bash
+
+python3  metrics.py "$@"
